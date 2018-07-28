@@ -1,0 +1,2 @@
+class ReplyPost < ApplicationRecord
+end

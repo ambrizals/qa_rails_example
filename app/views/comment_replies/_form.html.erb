@@ -1,0 +1,32 @@
+<%= form_with(model: comment_reply, local: true) do |form| %>
+  <% if comment_reply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment_reply.errors.count, "error") %> prohibited this comment_reply from being saved:</h2>
+
+      <ul>
+      <% comment_reply.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reply %>
+    <%= form.text_field :reply %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.text_field :user %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
