@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @post_reply.post_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post_reply.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post_reply.user_id %>
+</p>
+
+<p>
+  <strong>Flag delete:</strong>
+  <%= @post_reply.flag_delete %>
+</p>
+
+<%= link_to 'Edit', edit_post_reply_path(@post_reply) %> |
+<%= link_to 'Back', post_replies_path %>

@@ -1,10 +1,10 @@
-<%= form_with(model: comment_reply, local: true) do |form| %>
-  <% if comment_reply.errors.any? %>
+<%= form_with(model: post_reply, local: true) do |form| %>
+  <% if post_reply.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment_reply.errors.count, "error") %> prohibited this comment_reply from being saved:</h2>
+      <h2><%= pluralize(post_reply.errors.count, "error") %> prohibited this post_reply from being saved:</h2>
 
       <ul>
-      <% comment_reply.errors.full_messages.each do |message| %>
+      <% post_reply.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :reply_id %>
-    <%= form.number_field :reply_id %>
+    <%= form.label :post_id %>
+    <%= form.number_field :post_id %>
   </div>
 
   <div class="field">

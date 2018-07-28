@@ -2,10 +2,10 @@ class CreatePosts < ActiveRecord::Migration[5.2]
   def change
     create_table :posts do |t|
       t.string :title
-      t.string :content
-      t.integer :category
-      t.integer :user
-      t.boolean :flag_delete, default: false
+      t.text :content
+      t.integer :user_id
+      t.integer :category_id
+      t.boolean :flag_delete
 
       t.timestamps
     end

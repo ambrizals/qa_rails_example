@@ -2,7 +2,7 @@
 
 <p>
   <strong>Reply:</strong>
-  <%= @comment_reply.reply %>
+  <%= @comment_reply.reply_id %>
 </p>
 
 <p>
@@ -12,7 +12,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @comment_reply.user %>
+  <%= @comment_reply.user_id %>
+</p>
+
+<p>
+  <strong>Flag delete:</strong>
+  <%= @comment_reply.flag_delete %>
 </p>
 
 <%= link_to 'Edit', edit_comment_reply_path(@comment_reply) %> |

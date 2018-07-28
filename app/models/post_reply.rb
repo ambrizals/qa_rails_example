@@ -1,0 +1,2 @@
+class PostReply < ApplicationRecord
+end

@@ -1,6 +1,6 @@
 class CommentRepliesController < ApplicationController
   before_action :set_comment_reply, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+
   # GET /comment_replies
   # GET /comment_replies.json
   def index
@@ -69,6 +69,6 @@ class CommentRepliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_reply_params
-      params.require(:comment_reply).permit(:reply, :content, :user)
+      params.require(:comment_reply).permit(:reply_id, :content, :user_id, :flag_delete)
     end
 end

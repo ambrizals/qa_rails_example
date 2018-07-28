@@ -17,7 +17,7 @@ class CommentRepliesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create comment_reply" do
     assert_difference('CommentReply.count') do
-      post comment_replies_url, params: { comment_reply: { content: @comment_reply.content, reply: @comment_reply.reply, user: @comment_reply.user } }
+      post comment_replies_url, params: { comment_reply: { content: @comment_reply.content, flag_delete: @comment_reply.flag_delete, reply_id: @comment_reply.reply_id, user_id: @comment_reply.user_id } }
     end
 
     assert_redirected_to comment_reply_url(CommentReply.last)
@@ -34,7 +34,7 @@ class CommentRepliesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update comment_reply" do
-    patch comment_reply_url(@comment_reply), params: { comment_reply: { content: @comment_reply.content, reply: @comment_reply.reply, user: @comment_reply.user } }
+    patch comment_reply_url(@comment_reply), params: { comment_reply: { content: @comment_reply.content, flag_delete: @comment_reply.flag_delete, reply_id: @comment_reply.reply_id, user_id: @comment_reply.user_id } }
     assert_redirected_to comment_reply_url(@comment_reply)
   end
 

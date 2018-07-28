@@ -2,12 +2,14 @@
 
 one:
   title: MyString
-  content: MyString
-  category: MyString
-  user: MyString
+  content: MyText
+  user_id: 1
+  category_id: 1
+  flag_delete: false
 
 two:
   title: MyString
-  content: MyString
-  category: MyString
-  user: MyString
+  content: MyText
+  user_id: 1
+  category_id: 1
+  flag_delete: false

@@ -15,8 +15,9 @@ class CommentRepliesTest < ApplicationSystemTestCase
     click_on "New Comment Reply"
 
     fill_in "Content", with: @comment_reply.content
-    fill_in "Reply", with: @comment_reply.reply
-    fill_in "User", with: @comment_reply.user
+    fill_in "Flag Delete", with: @comment_reply.flag_delete
+    fill_in "Reply", with: @comment_reply.reply_id
+    fill_in "User", with: @comment_reply.user_id
     click_on "Create Comment reply"
 
     assert_text "Comment reply was successfully created"
@@ -28,8 +29,9 @@ class CommentRepliesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Content", with: @comment_reply.content
-    fill_in "Reply", with: @comment_reply.reply
-    fill_in "User", with: @comment_reply.user
+    fill_in "Flag Delete", with: @comment_reply.flag_delete
+    fill_in "Reply", with: @comment_reply.reply_id
+    fill_in "User", with: @comment_reply.user_id
     click_on "Update Comment reply"
 
     assert_text "Comment reply was successfully updated"

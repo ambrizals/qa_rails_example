@@ -1,31 +1,21 @@
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Category</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.category %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="card pages-title">
+    <div class="card-body">
+        <h1>Question List</h1>
+    </div>
+    <% if user_signed_in? %>
+      <div class="card-footer">
+          <%= link_to 'Create Question', new_post_path, :class => 'btn btn-primary btn-block' %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+</div>
+<% @posts.each do |post| %>
+  <div class="list-group">
+    <%= link_to post, :class => 'list-group-item list-group-item-action flex-column align-items-start' do %>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= post.title %> <span class="badge badge-secondary"><%= post.category.nama %></span></h5>
+        <small><%= post.created_at.strftime('%F | %H:%M ') %></small>
+      </div>
+      <p class="mb-1"><%= truncate(post.content, :length => 50) %></small></p>
+    <% end %>
+  </div>
+<% end %>

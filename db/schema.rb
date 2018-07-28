@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_022732) do
+ActiveRecord::Schema.define(version: 2018_07_28_125551) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nama"
@@ -21,29 +21,29 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
   end
 
   create_table "comment_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "reply"
-    t.string "content"
-    t.integer "user"
-    t.boolean "flag_delete", default: false
+    t.integer "reply_id"
+    t.text "content"
+    t.integer "user_id"
+    t.boolean "flag_delete"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_id"
+    t.text "content"
+    t.integer "user_id"
+    t.boolean "flag_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.string "content"
-    t.integer "category"
-    t.integer "user"
-    t.boolean "flag_delete", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reply_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post"
-    t.string "content"
-    t.integer "user"
-    t.boolean "flag_delete", default: false
+    t.text "content"
+    t.integer "user_id"
+    t.integer "category_id"
+    t.boolean "flag_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
