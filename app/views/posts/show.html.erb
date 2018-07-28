@@ -1,25 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @post.category.nama %>
-</p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="card my-3">
+  <div class="card-body">
+    <div class="border-bottom">
+      <p class="lead"><%= @post.title %> <span class="badge badge-secondary"><%= @post.category.nama %></span></p>
+      <p>Created by : <%= @post.user.username %> (<%= @post.created_at.strftime('%F | %H:%M ') %>) </p>
+    </div>
+    <div class="my-2">
+      <%= @post.content %>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <% if (current_user.id == @post.user_id) or (current_user.is_admin == true) %>
+      <div class="card-footer">
+        <%= link_to 'Edit Question', edit_post_path(@post), :class => 'btn btn-info' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
