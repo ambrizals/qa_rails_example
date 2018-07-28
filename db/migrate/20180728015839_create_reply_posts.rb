@@ -1,9 +1,9 @@
 class CreateReplyPosts < ActiveRecord::Migration[5.2]
   def change
     create_table :reply_posts do |t|
-      t.string :post
+      t.integer :post
       t.string :content
-      t.string :user
+      t.integer :user
       t.boolean :flag_delete, default: false
 
       t.timestamps

@@ -1,19 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nama:</strong>
-  <%= @category.nama %>
-</p>
-
-<p>
-  <strong>Deskripsi:</strong>
-  <%= @category.deskripsi %>
-</p>
-
-<p>
-  <strong>Flag delete:</strong>
-  <%= @category.flag_delete %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="card pages-title">
+    <div class="card-body">
+        <h1><%= @category.nama %></h1>
+        <p class="lead"><%= @category.deskripsi %></p>
+    </div>
+</div>

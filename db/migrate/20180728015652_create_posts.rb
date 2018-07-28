@@ -3,8 +3,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.string :title
       t.string :content
-      t.string :category
-      t.string :user
+      t.integer :category
+      t.integer :user
       t.boolean :flag_delete, default: false
 
       t.timestamps

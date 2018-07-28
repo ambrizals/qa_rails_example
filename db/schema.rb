@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
   end
 
   create_table "comment_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "reply"
+    t.integer "reply"
     t.string "content"
-    t.string "user"
+    t.integer "user"
     t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,17 +32,17 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "content"
-    t.string "category"
-    t.string "user"
+    t.integer "category"
+    t.integer "user"
     t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reply_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "post"
+    t.integer "post"
     t.string "content"
-    t.string "user"
+    t.integer "user"
     t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

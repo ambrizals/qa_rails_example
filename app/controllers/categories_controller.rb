@@ -1,10 +1,14 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :restore]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.where(flag_delete: false)
+  end
+
+  def deleted
+    @categories = Category.where(flag_delete: true)
   end
 
   # GET /categories/1
@@ -59,9 +63,19 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category.destroy
+    @category.flag_delete = true
+    @category.save
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def restore
+    @category.flag_delete = false
+    @category.save
+    respond_to do |format|
+      format.html { redirect_to deleted_category_path, notice: 'Category was successfully restored' }
       format.json { head :no_content }
     end
   end

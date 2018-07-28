@@ -1,5 +1,6 @@
 class ReplyPostsController < ApplicationController
   before_action :set_reply_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /reply_posts
   # GET /reply_posts.json

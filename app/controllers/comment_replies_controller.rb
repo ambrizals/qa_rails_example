@@ -1,6 +1,6 @@
 class CommentRepliesController < ApplicationController
   before_action :set_comment_reply, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   # GET /comment_replies
   # GET /comment_replies.json
   def index

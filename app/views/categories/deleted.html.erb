@@ -6,7 +6,7 @@
 
 <div class="row">
     <% @categories.each do |category| %>
-        <div class="col-md-4 my-2">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <p class="lead"><%= category.nama %></p>
@@ -15,13 +15,12 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-4">
-                            <%= link_to 'Show', category, :class => 'btn btn-outline-primary' %>
+                            <!-- blank -->
                         </div>
                         <div class="col-md-8 text-right">
                             <% if user_signed_in?  %>
                                 <% if current_user.is_admin %>
-                                <%= link_to 'Edit', edit_category_path(category), :class => 'btn btn-outline-primary' %>
-                                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-primary' %>
+                                <%= link_to 'Restore', restore_category_path(category), method: :post, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-primary' %>
                                 <% end %>
                             <% end %>
                         </div>
@@ -34,13 +33,6 @@
 <br/>
 <% if user_signed_in? %>
     <% if current_user.is_admin %>
-        <div class="row">
-            <div class="col-md-6">
-                <%= link_to 'New Category', new_category_path, :class => 'btn btn-primary btn-block' %>
-            </div>
-            <div class="col-md-6">
-                <%= link_to 'Deleted Category', deleted_category_path, :class => 'btn btn-warning btn-block' %>
-            </div>
-        </div>
+        <%= link_to 'Category List', categories_path, :class => 'btn btn-primary btn-block' %>
     <% end %>
 <% end %>
