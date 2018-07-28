@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :category
       t.string :user
+      t.boolean :flag_delete, default: false
 
       t.timestamps
     end

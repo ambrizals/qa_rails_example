@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nama"
     t.string "deskripsi"
-    t.string "flag_delete"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
     t.string "reply"
     t.string "content"
     t.string "user"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
     t.string "content"
     t.string "category"
     t.string "user"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_022732) do
     t.string "post"
     t.string "content"
     t.string "user"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

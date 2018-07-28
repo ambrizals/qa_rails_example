@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => "registration/registrations",
     :passwords => "registrations/passwords",
-    :session => "sessions/sessions"
+    :sessions => "session/sessions",
   } 
   resources :users
 

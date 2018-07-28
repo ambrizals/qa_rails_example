@@ -14,7 +14,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    if current_user.is_admin
+      @category = Category.new
+    else
+      flash[:notice] = 'Access Denied'
+      redirect_to categories_path 
+    end
   end
 
   # GET /categories/1/edit

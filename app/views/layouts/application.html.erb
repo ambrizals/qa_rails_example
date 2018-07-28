@@ -11,6 +11,16 @@
     <body>
         <%= render 'parts/header' %>
         <div class="container">
+            <% if alert %>
+                <div class="alert alert-danger">
+                    <%= alert %>
+                </div>
+            <% end %>
+            <% if notice %>
+                <div class="alert alert-success">
+                    <%= notice %>
+                </div>
+            <% end %> 
             <%= yield %>
         </div>
     </body>

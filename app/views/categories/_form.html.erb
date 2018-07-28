@@ -1,32 +1,31 @@
-<%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-      <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="card">
+    <div class="card-header">
+        New Category
     </div>
-  <% end %>
+    <%= form_with(model: category, local: true) do |form| %>
+        <div class="card-body">
+            <% if category.errors.any? %>
+                <div class="alert alert-danger">
+                    <p><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</p>
+                    <ul>
+                    <% category.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="form-group">
+                <%= form.label :nama %>
+                <%= form.text_field :nama, :class => 'form-control' %>
+            </div>
 
-  <div class="field">
-    <%= form.label :nama %>
-    <%= form.text_field :nama %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deskripsi %>
-    <%= form.text_field :deskripsi %>
-  </div>
-
-  <div class="field">
-    <%= form.label :flag_delete %>
-    <%= form.text_field :flag_delete %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+            <div class="form-group">
+                <%= form.label :deskripsi %>
+                <%= form.text_area :deskripsi, :class => 'form-control' %>
+            </div>
+        </div>
+        <div class="card-footer">
+            <%= form.submit 'Create Category', :class => 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>
