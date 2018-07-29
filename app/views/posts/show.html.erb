@@ -18,32 +18,38 @@
 </div>
 
 
-<% @reply.each do |post_reply| %>
-  <div class="card my-4">
-    <div class="card-body">
-      <div class="border-bottom">
-        <p><%= post_reply.user.username %></p>
-      </div>
-      <div>
-        <%= post_reply.content %>
-      </div>
-    </div>
-    <div class="card-footer">
-      <div class="row">
-        <div class="col-md-4">
-          <%= post_reply.created_at.strftime('%F | %H:%M ') %>
-        </div>
-        <div class="col-md-8 text-right">
-          <% if user_signed_in? %>
-            <% if (current_user.id == post_reply.user_id) or (current_user.is_admin) %>
-              <%= link_to 'Edit', edit_post_reply_path(post_reply), :class => 'btn btn-outline-primary' %>
-              <%= link_to 'Delete', post_reply, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-primary' %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<% if @reply.count == 0 %>
+  <div class="alert alert-info">
+    No replies in this questions.
   </div>
+<% else %>
+  <% @reply.each do |post_reply| %>
+    <div class="card my-4">
+      <div class="card-body">
+        <div class="border-bottom">
+          <p><%= post_reply.user.username %></p>
+        </div>
+        <div>
+          <%= post_reply.content %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <%= post_reply.created_at.strftime('%F | %H:%M ') %>
+          </div>
+          <div class="col-md-8 text-right">
+            <% if user_signed_in? %>
+              <% if (current_user.id == post_reply.user_id) or (current_user.is_admin) %>
+                <%= link_to 'Edit', edit_post_reply_path(post_reply), :class => 'btn btn-outline-primary' %>
+                <%= link_to 'Delete', post_reply, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-outline-primary' %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 

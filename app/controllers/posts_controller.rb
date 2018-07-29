@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    if params[:search]
+      @posts = Post.all.order(created_at: :desc).where('title like ?',"%#{params[:search]}%")
+    else
+      @posts = Post.all.order(created_at: :desc)
+    end
   end
 
   # GET /posts/1

@@ -17,10 +17,10 @@
                     <%= link_to 'Create a Question', new_post_path, :class => 'nav-link' %>
                 </li>
             </ul>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>&nbsp;
-            </form>
+            <%= form_tag(root_path, method: "get", :enforce_utf8 => false, class: 'form-inline') do %>
+                <%= text_field_tag(:search, params[:search], class: 'form-control mr-sm-2', placeholder: 'Search question in here') %>
+                <%= submit_tag("Search", name: nil, class: 'btn btn-outline-success my-2 my-sm-0') %>&nbsp;
+            <% end %>
             <div class="my-2 my-lg-0">
                 <% if user_signed_in? %>
                     <ul class="navbar-nav">
