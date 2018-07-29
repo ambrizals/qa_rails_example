@@ -1,37 +1,26 @@
-<%= form_with(model: post_reply, local: true) do |form| %>
-  <% if post_reply.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post_reply.errors.count, "error") %> prohibited this post_reply from being saved:</h2>
+<div class="card">
+  <%= form_with(model: post_reply, local: true) do |form| %>
+    <div class="card-body">
+      <% if post_reply.errors.any? %>
+        <div class="alert">
+          <p class="lead"><%= pluralize(post_reply.errors.count, "error") %> prohibited this post_reply from being saved:</p>
 
-      <ul>
-      <% post_reply.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+            <% post_reply.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="form-group">
+      <%= form.label :content %>
+      <%= form.text_area :content, :class => 'form-control', :required => 'required' %>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <%= form.submit 'Submit', :class => 'btn btn-block btn-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :post_id %>
-    <%= form.number_field :post_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :flag_delete %>
-    <%= form.check_box :flag_delete %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -5,11 +5,11 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : 2.2
 
 * System dependencies
 
-* Configuration
+* Configuration : database.yml.default
 
 * Database creation
 

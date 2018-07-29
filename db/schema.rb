@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_125551) do
     t.integer "reply_id"
     t.text "content"
     t.integer "user_id"
-    t.boolean "flag_delete"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_125551) do
     t.integer "post_id"
     t.text "content"
     t.integer "user_id"
-    t.boolean "flag_delete"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_125551) do
     t.text "content"
     t.integer "user_id"
     t.integer "category_id"
-    t.boolean "flag_delete"
+    t.boolean "flag_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

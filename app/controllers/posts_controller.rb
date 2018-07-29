@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @reply = PostReply.where(post_id: params[:id], flag_delete: false)
   end
 
   # GET /posts/new
@@ -19,6 +20,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if (current_user.id == @post.user_id) or (current_user.is_admin)
+
+    else
+      flash[:notice] = 'Access Denied'
+      redirect_to post_path(params[:id])
+    end
   end
 
   # POST /posts

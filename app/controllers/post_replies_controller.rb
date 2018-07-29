@@ -19,45 +19,63 @@ class PostRepliesController < ApplicationController
 
   # GET /post_replies/1/edit
   def edit
+    if (current_user.id == @post_reply.user_id) or (current_user.is_admin)
+
+    else
+      flash[:notice] = 'Access Denied'
+      redirect_to post_path(@post_reply.post_id)
+    end
   end
 
   # POST /post_replies
   # POST /post_replies.json
   def create
-    @post_reply = PostReply.new(post_reply_params)
-
-    respond_to do |format|
-      if @post_reply.save
-        format.html { redirect_to @post_reply, notice: 'Post reply was successfully created.' }
-        format.json { render :show, status: :created, location: @post_reply }
-      else
-        format.html { render :new }
-        format.json { render json: @post_reply.errors, status: :unprocessable_entity }
-      end
+    @post_reply = PostReply.new
+    @post_reply.post_id = params[:id]
+    @post_reply.content = params[:content]
+    @post_reply.user_id = current_user.id
+    if @post_reply.save
+      flash[:notice] = "Reply was succefully created"
+      redirect_to post_path(params[:id])
+    else
+      flash[:alert] = "Error : Content can't be blank"
+      redirect_to post_path(params[:id])
     end
   end
 
   # PATCH/PUT /post_replies/1
   # PATCH/PUT /post_replies/1.json
   def update
-    respond_to do |format|
+    if (current_user.id == @post_reply.user_id) or (current_user.is_admin)
       if @post_reply.update(post_reply_params)
-        format.html { redirect_to @post_reply, notice: 'Post reply was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post_reply }
+        flash[:notice] = "Reply was succefully updated"
+        redirect_to post_path(@post_reply.post_id)
       else
-        format.html { render :edit }
-        format.json { render json: @post_reply.errors, status: :unprocessable_entity }
+        flash[:alert] = "Error : Content can't be blank"
+        redirect_to post_path(@post_reply.post_id)
       end
+    else
+      flash[:notice] = 'Access Denied'
+      redirect_to post_path(@post_reply.post_id)
     end
   end
 
   # DELETE /post_replies/1
   # DELETE /post_replies/1.json
   def destroy
-    @post_reply.destroy
-    respond_to do |format|
-      format.html { redirect_to post_replies_url, notice: 'Post reply was successfully destroyed.' }
-      format.json { head :no_content }
+    if (current_user.id == @post_reply.user_id) or (current_user.is_admin)
+      @post_reply.flag_delete = true
+      @post_reply.save
+      if @post_reply.save
+        flash[:notice] = "Reply was succefully deleted"
+        redirect_to post_path(@post_reply.post_id)
+      else
+        flash[:alert] = "Uppss...."
+        redirect_to post_path(@post_reply.post_id)
+      end
+    else
+      flash[:notice] = 'Access Denied'
+      redirect_to post_path(@post_reply.post_id)
     end
   end
 

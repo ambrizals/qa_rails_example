@@ -4,3 +4,15 @@
         <p class="lead"><%= @category.deskripsi %></p>
     </div>
 </div>
+
+<% @posts.each do |post| %>
+  <div class="list-group">
+    <%= link_to post, :class => 'list-group-item list-group-item-action flex-column align-items-start' do %>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= post.title %> <span class="badge badge-secondary"><%= post.category.nama %></span></h5>
+        <small><%= post.created_at.strftime('%F | %H:%M ') %></small>
+      </div>
+      <p class="mb-1"><%= truncate(post.content, :length => 50) %></small></p>
+    <% end %>
+  </div>
+<% end %>

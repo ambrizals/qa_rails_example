@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :comment_replies
-  resources :post_replies
+  resources :post_replies, only: [:edit, :destroy, :update]
+  scope 'post_replies' do
+    post ':id', to: 'post_replies#create'
+  end
   resources :posts
   scope 'categories' do
     get 'deleted', to: 'categories#deleted', as: 'deleted_category'

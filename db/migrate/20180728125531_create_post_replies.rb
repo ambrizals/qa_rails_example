@@ -4,7 +4,7 @@ class CreatePostReplies < ActiveRecord::Migration[5.2]
       t.integer :post_id
       t.text :content
       t.integer :user_id
-      t.boolean :flag_delete
+      t.boolean :flag_delete, default: false
 
       t.timestamps
     end
